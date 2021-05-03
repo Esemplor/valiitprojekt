@@ -4,4 +4,36 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
+
+    <changeSet id="Ingredients 03-05-21" author="Arvo">
+        <createTable tableName="ingredients">
+            <column name="ingredient_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="ingredient_name" type="text"/>
+            <column name="ingredient_count" type="numeric" defaultValue="0"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="Display 03-05-21" author="Arvo">
+        <createTable tableName="display">
+            <column name="output" type="text"/>
+            <column name="recipe_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="recipe_name" type="text"/>
+            <column name="recipe_count" type="numeric" defaultValue="0"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="Recipes 03-05-21" author="Arvo">
+        <createTable tableName="recipes">
+            <column name="fkrecipe_id" type="int">
+                <constraints foreignKeyName="fk_recipe_id" references="display(recipe_id)"/>
+            </column>
+            <column name="fkingredient_id" type="int">
+            <constraints foreignKeyName="fk_ingredient_id" references="ingredients(ingredient_id)"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
+        <!--            <column name="author_id" type="int">-->
+        <!--                <constraints foreignKeyName="fk_book_author" references="author(id)"/>-->
