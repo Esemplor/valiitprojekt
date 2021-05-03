@@ -34,6 +34,26 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="Tabelite täitmine 03-05-21" author="Arvo">
+        <sql>
+            insert into ingredients (ingredient_id,ingredient_name,ingredient_count) VALUES ('1','Porgand','0');
+            insert into ingredients (ingredient_id,ingredient_name,ingredient_count) VALUES ('2','Juust','0');
+            insert into ingredients (ingredient_id,ingredient_name,ingredient_count) VALUES ('3','Kartul','0');
+            insert into ingredients (ingredient_id,ingredient_name,ingredient_count) VALUES ('4','Sai','0');
+            insert into ingredients (ingredient_id,ingredient_name,ingredient_count) VALUES ('5','Leib','0');
+            insert into ingredients (ingredient_id,ingredient_name,ingredient_count) VALUES ('6','Või','0');
+            insert into display (output,recipe_id,recipe_name,recipe_count) VALUES ('asd','1','Ahjukartulid juustuga',0);
+            insert into display (output,recipe_id,recipe_name,recipe_count) VALUES ('asd','2','Juustusai',0);
+            insert into display (output,recipe_id,recipe_name,recipe_count) VALUES ('asd','3','Võileib',0);
+            insert into recipes (fkrecipe_id,fkingredient_id) VALUES ('1','3');
+            insert into recipes (fkrecipe_id,fkingredient_id) VALUES ('1','2');
+            insert into recipes (fkrecipe_id,fkingredient_id) VALUES ('2','4');
+            insert into recipes (fkrecipe_id,fkingredient_id) VALUES ('2','3');
+            insert into recipes (fkrecipe_id,fkingredient_id) VALUES ('3','5');
+            insert into recipes (fkrecipe_id,fkingredient_id) VALUES ('3','6');
+
+        </sql>
+    </changeSet>
 </databaseChangeLog>
         <!--            <column name="author_id" type="int">-->
         <!--                <constraints foreignKeyName="fk_book_author" references="author(id)"/>-->
