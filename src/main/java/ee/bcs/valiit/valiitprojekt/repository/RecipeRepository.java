@@ -33,4 +33,11 @@ public class RecipeRepository {
         return jdbcTemplate.queryForObject(sql, paramMap, String.class);
     }
 
+    public void ingredientCountUpdate (List<Integer> a){
+        String sql = "UPDATE ingredients SET ingredient_count = ingredient_count +1 WHERE ingredient_id IN (:a)";
+        Map<String, Object> paramMap = new HashMap();
+        paramMap.put("a", a);
+        jdbcTemplate.update(sql, paramMap);
+    }
+
 }

@@ -13,9 +13,10 @@ public class RecipeService {
     @Autowired
     RecipeRepository recipeRepository;
 
-public List<Display> recipe(List<Integer> a){
-    return recipeRepository.recipe(a);
-}
+    public List<Display> recipe(List<Integer> a) {
+        recipeRepository.ingredientCountUpdate(a);
+        return recipeRepository.recipe(a);
+    }}
 
 
-}
+
