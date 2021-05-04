@@ -1,6 +1,7 @@
 package ee.bcs.valiit.valiitprojekt.service;
 
 
+import ee.bcs.valiit.valiitprojekt.Display;
 import ee.bcs.valiit.valiitprojekt.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +13,8 @@ public class RecipeService {
     @Autowired
     RecipeRepository recipeRepository;
 
-public String recipe(List<Integer> a){
-    return "Võimalikud retseptid on: "+recipeRepository.recipe(a);
+public List<Display> recipe(List<Integer> a){
+    return recipeRepository.recipe(a);
 }
 
 

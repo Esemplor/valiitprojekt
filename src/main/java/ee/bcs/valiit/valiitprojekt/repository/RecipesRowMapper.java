@@ -6,16 +6,18 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RecipesRowMapper implements RowMapper<Recipes> {
+public class RecipesRowMapper implements RowMapper<Display> {
 
-
-    public Recipes mapRow(ResultSet resultSet, int i) throws SQLException {
-        Recipes response =new Recipes();
-//        response.setOutput(resultSet.getString("output"));
-        response.setFkrecipeId(resultSet.getInt("fkrecipe_id"));
-        response.setFkingredientId(resultSet.getInt("fkingredient_id"));
-//        response.setRecipeId(resultSet.getInt("recipe_id"));
-//        response.setRecipeCount(resultSet.getDouble("recipe_count"));
-        return response;
+@Override
+    public Display mapRow(ResultSet resultSet, int i) throws SQLException {
+        Display output = new Display();
+        Recipes response = new Recipes();
+//        output.setOutput(resultSet.getString("output"));
+//        response.setFkrecipeId(resultSet.getInt("fkrecipe_id"));
+        output.setRecipeName(resultSet.getString("recipe_name"));
+//        response.setFkingredientId(resultSet.getInt("fkingredient_id"));
+        output.setFkrecipeId(resultSet.getInt("fkrecipe_id"));
+//        output.setRecipeCount(resultSet.getDouble("recipe_count"));
+        return output;
     }
 }

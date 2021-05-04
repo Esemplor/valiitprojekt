@@ -16,7 +16,7 @@ public class RecipeRepository {
     @Autowired
     NamedParameterJdbcTemplate jdbcTemplate;
 
-    public List<Recipes> recipe(List<Integer> a) {
+    public List<Display> recipe(List<Integer> a) {
         String sql = "SELECT d.recipe_name, r.fkrecipe_id, count(*) FROM recipes r\n" +
                 "LEFT JOIN display d on d.recipe_id = r.fkrecipe_id\n" +
                 "WHERE fkingredient_id IN (:a) group by  d.recipe_name, r.fkrecipe_id order by count(*) desc";
