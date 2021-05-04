@@ -17,9 +17,9 @@ public class RecipeRepository {
     NamedParameterJdbcTemplate jdbcTemplate;
 
     public List<Display> recipe(List<Integer> a) {
-        String sql = "SELECT d.recipe_name, r.fkrecipe_id, count(*) FROM recipes r\n" +
+        String sql = "SELECT d.recipe_name, r.fkrecipe_id, d.output, count(*) FROM recipes r\n" +
                 "LEFT JOIN display d on d.recipe_id = r.fkrecipe_id\n" +
-                "WHERE fkingredient_id IN (:a) group by  d.recipe_name, r.fkrecipe_id order by count(*) desc";
+                "WHERE fkingredient_id IN (:a) group by d.output, d.recipe_name, r.fkrecipe_id order by count(*) desc";
         Map<String, Object> paramMap = new HashMap();
         paramMap.put("a", a);
         return jdbcTemplate.query(sql, paramMap, new RecipesRowMapper());

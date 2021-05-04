@@ -12,7 +12,7 @@ public class RecipesRowMapper implements RowMapper<Display> {
     public Display mapRow(ResultSet resultSet, int i) throws SQLException {
         Display output = new Display();
         Recipes response = new Recipes();
-//        output.setOutput(resultSet.getString("output"));
+        output.setOutput(resultSet.getString("output"));
 //        response.setFkrecipeId(resultSet.getInt("fkrecipe_id"));
         output.setRecipeName(resultSet.getString("recipe_name"));
 //        response.setFkingredientId(resultSet.getInt("fkingredient_id"));

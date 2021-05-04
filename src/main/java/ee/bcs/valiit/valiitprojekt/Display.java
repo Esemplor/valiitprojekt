@@ -2,9 +2,20 @@ package ee.bcs.valiit.valiitprojekt;
 
 public class Display {
 
+    private String output;
     private Integer fkrecipeId;
     private String recipeName;
     private Double recipeCount;
+
+
+    public String getOutput() {
+        return output;
+    }
+
+    public void setOutput(String output) {
+        this.output = output;
+    }
+
 
     public Integer getFkrecipeId() {
         return fkrecipeId;
