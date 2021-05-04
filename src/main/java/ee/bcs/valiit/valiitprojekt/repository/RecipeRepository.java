@@ -1,8 +1,9 @@
 package ee.bcs.valiit.valiitprojekt.repository;
 
 
+import ee.bcs.valiit.valiitprojekt.Display;
+import ee.bcs.valiit.valiitprojekt.Recipes;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -15,13 +16,13 @@ public class RecipeRepository {
     @Autowired
     NamedParameterJdbcTemplate jdbcTemplate;
 
-    public int recipe(List<Integer> a) {
+    public List<Recipes> recipe(List<Integer> a) {
         String sql = "SELECT d.recipe_name, r.fkrecipe_id, count(*) FROM recipes r\n" +
                 "LEFT JOIN display d on d.recipe_id = r.fkrecipe_id\n" +
                 "WHERE fkingredient_id IN (:a) group by  d.recipe_name, r.fkrecipe_id order by count(*) desc";
         Map<String, Object> paramMap = new HashMap();
         paramMap.put("a", a);
-        return jdbcTemplate.query(sql, paramMap, new RowMapper<>().class);
+        return jdbcTemplate.query(sql, paramMap, new RecipesRowMapper());
     }
 
     public String output(int a, int b, int c){

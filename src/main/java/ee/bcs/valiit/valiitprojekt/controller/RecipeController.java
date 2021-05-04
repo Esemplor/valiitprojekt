@@ -19,7 +19,7 @@ public class RecipeController {
     // localhost:8080/stuff/recipe?a=1,5,6
     @GetMapping("stuff/recipe")
     public String recipe(@RequestParam("a") List<Integer> a) {
-        return recipeService+"";
+        return recipeService.recipe(a)+"";
     }
 
 
