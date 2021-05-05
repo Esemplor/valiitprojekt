@@ -22,8 +22,6 @@ public class RecipeRepository {
                 "SELECT d.output, d.recipe_name, r.fkrecipe_id, count(*) matches, (SELECT count(*) FROM recipes r1 WHERE r1.fkrecipe_id = r.fkrecipe_id) total FROM recipes r LEFT JOIN display d on d.recipe_id = r.fkrecipe_id\n" +
                 "WHERE fkingredient_id IN (:a) group by d.output, d.recipe_name, r.fkrecipe_id order by count(*) desc\n" +
                 "              ) r2 WHERE matches = total;";
-
-
         Map<String, Object> paramMap = new HashMap();
         paramMap.put("a", a);
         return jdbcTemplate.query(sql, paramMap, new RecipesRowMapper());
