@@ -113,6 +113,11 @@
         insert into recipes (fkrecipe_id,fkingredient_id) VALUES ('10','1');
     </sql>
     </changeSet>
+    <changeSet id="Outputi täitmine 05-05-21" author="Arvo">
+    <sql>
+        update display SET output ='https://nami-nami.ee/retsept/5465/kana_riisiroog_karriga' where recipe_id = 10;
+    </sql>
+    </changeSet>
 </databaseChangeLog>
         <!--            <column name="author_id" type="int">-->
         <!--                <constraints foreignKeyName="fk_book_author" references="author(id)"/>-->

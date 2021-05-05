@@ -2,6 +2,7 @@ package ee.bcs.valiit.valiitprojekt.repository;
 
 
 import ee.bcs.valiit.valiitprojekt.Display;
+import ee.bcs.valiit.valiitprojekt.Ingredients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -42,4 +43,8 @@ public class RecipeRepository {
         jdbcTemplate.update(sql, paramMap);
     }
 
+    public List<Ingredients> allIngredients(){
+        String sql = "SELECT ingredient_name FROM ingredients";
+        return jdbcTemplate.query(sql, new HashMap(),new IngredientRowMapper());
+    }
 }
