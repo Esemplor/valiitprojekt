@@ -28,4 +28,9 @@ public class RecipeController {
     public List<Ingredients> allIngredients() {
         return recipeService.allIngredients();
     }
+    @CrossOrigin
+    @GetMapping("stuff/recipeCount")
+    public void recipeCount(@RequestParam("a") String a){
+        recipeService.recipeCount(a);
+    }
 }

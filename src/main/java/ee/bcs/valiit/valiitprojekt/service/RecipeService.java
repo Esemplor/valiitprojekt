@@ -22,6 +22,10 @@ public class RecipeService {
     public List<Ingredients> allIngredients(){
         return recipeRepository.allIngredients();
     }
+
+    public void recipeCount(String a){
+        recipeRepository.recipeCount(a);
+    }
 }
 
 

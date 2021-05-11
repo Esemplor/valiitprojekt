@@ -6,6 +6,7 @@ public class Ingredients {
     private Integer ingredientId;
     private Double ingredientCount;
 
+
     public String getIngredientName() {
         return ingredientName;
     }

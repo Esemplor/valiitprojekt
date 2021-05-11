@@ -6,7 +6,15 @@ public class Display {
     private Integer fkrecipeId;
     private String recipeName;
     private Double recipeCount;
+    private String imgurl;
 
+    public String getImgurl() {
+        return imgurl;
+    }
+
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
+    }
 
     public String getOutput() {
         return output;

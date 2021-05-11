@@ -20,8 +20,8 @@ public class RecipeRepository {
 
     public List<Display> recipe(List<Integer> a) {
         String sql = "SELECT * FROM (\n" +
-                "SELECT d.output, d.recipe_name, r.fkrecipe_id, count(*) matches, (SELECT count(*) FROM recipes r1 WHERE r1.fkrecipe_id = r.fkrecipe_id) total FROM recipes r LEFT JOIN display d on d.recipe_id = r.fkrecipe_id\n" +
-                "WHERE fkingredient_id IN (:a) group by d.output, d.recipe_name, r.fkrecipe_id order by count(*) desc\n" +
+                "SELECT d.imgurl, d.output, d.recipe_name, r.fkrecipe_id, count(*) matches, (SELECT count(*) FROM recipes r1 WHERE r1.fkrecipe_id = r.fkrecipe_id) total FROM recipes r LEFT JOIN display d on d.recipe_id = r.fkrecipe_id\n" +
+                "WHERE fkingredient_id IN (:a) group by d.imgurl, d.output, d.recipe_name, r.fkrecipe_id order by count(*) desc\n" +
                 "              ) r2 WHERE matches = total;";
         Map<String, Object> paramMap = new HashMap();
         paramMap.put("a", a);
@@ -43,8 +43,15 @@ public class RecipeRepository {
         jdbcTemplate.update(sql, paramMap);
     }
 
-    public List<Ingredients> allIngredients(){
+    public List<Ingredients> allIngredients() {
         String sql = "SELECT ingredient_name FROM ingredients";
-        return jdbcTemplate.query(sql, new HashMap(),new IngredientRowMapper());
+        return jdbcTemplate.query(sql, new HashMap(), new IngredientRowMapper());
+    }
+
+    public void recipeCount(String a) {
+        String sql = "UPDATE display SET recipe_count = recipe_count +1 WHERE output = :recipe";
+        Map<String, Object> paramMap = new HashMap();
+        paramMap.put("recipe", "'"+a+"'");
+        jdbcTemplate.update(sql, paramMap);
     }
 }
