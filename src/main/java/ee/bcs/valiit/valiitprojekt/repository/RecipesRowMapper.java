@@ -17,7 +17,6 @@ public class RecipesRowMapper implements RowMapper<Display> {
         output.setRecipeName(resultSet.getString("recipe_name"));
 //        response.setFkingredientId(resultSet.getInt("fkingredient_id"));
         output.setFkrecipeId(resultSet.getInt("fkrecipe_id"));
-
 //        output.setRecipeCount(resultSet.getDouble("recipe_count"));
         return output;
     }
