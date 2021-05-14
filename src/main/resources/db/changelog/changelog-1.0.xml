@@ -335,10 +335,20 @@
             insert into recipes (fkrecipe_id,fkingredient_id) VALUES ('32','50');
         </sql>
     </changeSet>
-
-
-
-
+    <changeSet id="1-9 retseptide ajutine kõrvaldamine lisades frondis mittekuvatava elemendi" author="Marek">
+        <sql>
+            insert into ingredients (ingredient_id,ingredient_name,ingredient_count) VALUES ('99','Midagi','0');
+            update recipes SET fkingredient_id =99 where fkrecipe_id = 1;
+            update recipes SET fkingredient_id =99 where fkrecipe_id = 2;
+            update recipes SET fkingredient_id =99 where fkrecipe_id = 3;
+            update recipes SET fkingredient_id =99 where fkrecipe_id = 4;
+            update recipes SET fkingredient_id =99 where fkrecipe_id = 5;
+            update recipes SET fkingredient_id =99 where fkrecipe_id = 6;
+            update recipes SET fkingredient_id =99 where fkrecipe_id = 7;
+            update recipes SET fkingredient_id =99 where fkrecipe_id = 8;
+            update recipes SET fkingredient_id =99 where fkrecipe_id = 9;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
         <!--            <column name="author_id" type="int">-->
         <!--                <constraints foreignKeyName="fk_book_author" references="author(id)"/>-->
